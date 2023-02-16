@@ -1,0 +1,169 @@
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21icmUiOiJKZXPDunMiLCJpZCI6IjYxZWJhZGQzYTM5NjdhZDdkNTFmMzEwNyIsImlhdCI6MTY0NDMxMDUzMCwiZXhwIjoxNjQ0MzE0MTMwfQ.GRBxgvWqDdpkPuRqq4LKyV9nLFuncTslvWAgdq9h2kk
+@url=http://localhost:3001
+
+// Hace el login del usaurio y devuevlve el Token correspondiente
+// Exito: Status(200)
+// Fallo: Status(400) 
+POST http://localhost:3001/api/user/login
+Content-Type: application/json
+
+{
+    "email":"jesquiliche@gmail.com",
+    "password":"3912481B"
+}
+
+###
+# Ruta para obtener todos los usuarios
+// Exito: Status(200)
+// Fallo: Status(400)
+
+GET http://localhost:3001/api/user
+Content-Type: application/json
+auth-token: {{token}}
+
+###
+# Ruta para obtener un usuario por su id
+// Exito: Status(200)
+// Fallo: Status(400)
+
+
+GET http://localhost:3001/api/user/61ebaa9aa3967ad7d51f30ee
+Content-Type: application/json
+auth-token: {{token}}
+
+
+
+###
+// Ruta para obtener para obtener todos los usuarios que cumplan 
+// los criterios especificados en el Body
+//Utiliar un Or para filtrar los datos
+// Exito: Status(200)
+// Fallo: Status(400)
+
+GET http://localhost:3001/api/user/filter
+Content-Type: application/json
+auth-token: {{token}}
+
+{
+    //Filtrar por nombre
+    "nombre":"Jesus",
+    //Filtrar por email
+    "email":"",
+    //Filtrar por email
+    "apellidos":""
+  
+}
+
+
+###
+# Ruta para registrar los usuarios
+
+POST   http://localhost:3001/api/user/register
+Content-Type: application/json
+auth-token: {{token}}
+
+{
+  "email": "carmen@gmail.com",
+  "nombre": "Carmen",
+  "password": "123456Z",
+  "apellidos": "Gomez",
+  "telefono": "6312222",
+  "direccion": "Carrer de América, 20",
+  "provincia": "08-Barcelona",
+  "poblacion": "08007-Arenys de Munt"
+}
+
+###
+//Ruta para modificar los usuarios
+
+PUT http://localhost:3001/api/user/61ec7e9a25e0aa6f9c2fa227
+Content-Type: application/json
+auth-token: {{token}}
+
+{
+  "email": "pepe@gmail.com",
+  "nombre": "Pepe",
+  "password": "123456Z",
+  "apellidos": "Fernandez Lopez",
+  "telefono": "6312222",
+  "direccion": "Carrer de América, 20",
+  "provincia": "08-Barcelona",
+  "poblacion": "08007-Arenys de Munt"
+}
+
+###
+//Ruta para borrar los usuarios
+DELETE http://localhost:3001/api/user/61ec7e9a25e0aa6f9c2fa227
+Content-Type: application/json
+auth-token: {{token}}
+
+###
+//Rute para obtener todas las provincias de España
+
+GET http://localhost:3001/api/provincias
+Content-Type: application/json
+auth-token: {{token}}
+
+###
+//Ruta para obtener todas las municipios de una provincia
+//Se le pasa los dos primeros digitos de la provincia
+// Barcelona=08
+GET http://localhost:3001/api/municipios/08
+Content-Type: application/json
+auth-token: {{token}}
+
+
+###
+GET http://localhost:3001/api/bloque
+Content-Type: application/json
+auth-token: {{token}}
+
+
+###
+GET http://localhost:3001/api/bloque/61ff96e3dd054ec13d5694ca
+Content-Type: application/json
+auth-token: {{token}}
+
+
+###
+//Ruta para añadir Blouques
+POST  http://localhost:3001/api/bloque 
+Content-Type: application/json
+auth-token: {{token}}
+
+{
+  "numero":1,
+  "descripcion":"Bloque I. Organización del Estado y Administración electrónica"
+}
+
+###
+DELETE  http://localhost:3001/api/bloque/61fba789de6dfca8dfade169
+Content-Type: application/json
+auth-token: {{token}}
+
+###
+PUT  http://localhost:3001/api/bloque/62013aeb3f6fd25497494f76
+Content-Type: application/json
+auth-token: {{token}}
+
+{
+  "numero":1,
+  "descripcion":"Bloque I. Organización del Estado y Administración electrónica"
+}
+
+###
+GET http://localhost:3001/api/tema
+Content-Type: application/json
+auth-token: {{token}}
+
+###
+//Ruta para añadir Temas
+POST  http://localhost:3001/api/tema 
+Content-Type: application/json
+auth-token: {{token}}
+
+{
+  "numero":2,
+  "descripcion":"Tema 2. Constitución española",
+  "bloqueId":"62013aeb3f6fd25497494f76"
+}

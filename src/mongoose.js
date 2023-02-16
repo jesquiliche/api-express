@@ -2,7 +2,9 @@ require("dotenv").config();
 const mongoose = require('mongoose');
 
 
-//const uri = `mongodb://localhost/temario`;
+//const uri = `mongodb://localhost/temario`
+
+mongoose.set('strictQuery', false);
 const user=process.env.DB_USER;
 const password=process.env.DB_PASSWORD;
 

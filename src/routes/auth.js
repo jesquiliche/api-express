@@ -9,11 +9,12 @@ const getUserFilter = require('../controllers/GetUserFilter.controller');
 const verifyToken=require('../midleware/validate-token');
 const {xss} = require('express-xss-sanitizer');
 const {validateUser}=require('../midleware/validateUser');
+const {validateLogin}=require('../midleware/validateLogin');
 const { validate } = require('../models/User');
 
 router.post('/register',xss(),validateUser,validate, registerUser);
 
-router.post('/login',xss(), loginUser);
+router.post('/login',xss(),validateLogin,validate, loginUser);
 
 router.get("/",verifyToken,getUser);
 router.post("/filter",xss(),verifyToken,getUserFilter);

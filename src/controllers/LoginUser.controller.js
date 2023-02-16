@@ -1,16 +1,10 @@
 const router = require('express').Router();
 const sanitize = require("mongo-sanitize");
 const User=require("../models/User");
-const Joi = require('@hapi/joi');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 
-//Validacion contra esquema
-const schemaLogin = Joi.object({
-    email: Joi.string().min(6).max(255).required().email(),
-    password: Joi.string().min(3).max(1024).required()
-})
 
 const loginUser= async (req, res) => {
     

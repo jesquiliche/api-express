@@ -3,17 +3,12 @@ const { validationResult } = require('express-validator'); // importar la funciÃ
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const encriptarContrasena = require("../midleware/encriptar-contrasena");
-const { body } = require('express-validator/check')
+const { body } = require('express-validator')
 const sanitize=require('mongo-sanitize');
 
 const registerUser = async (req, res) => {
     req.body=sanitize(req.body)
-  // validar la solicitud utilizando express-validator
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
-
+ 
   // extraer los datos de la solicitud
   const { nombre, email, password, apellidos, telefono, direccion, poblacion, provincia } = req.body;
 

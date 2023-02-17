@@ -3,11 +3,11 @@ const { validationResult } = require('express-validator'); // importar la funciÃ
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const encriptarContrasena = require("../midleware/encriptar-contrasena");
-const { body } = require('express-validator')
-const sanitize=require('mongo-sanitize');
+const { body } = require('express-validator') // importar la funciÃ³n body desde express-validator
+const sanitize=require('mongo-sanitize'); // importar mongo-sanitize para sanitizar la entrada del usuario
 
 const registerUser = async (req, res) => {
-    req.body=sanitize(req.body)
+    req.body=sanitize(req.body); // sanitizar la entrada del usuario
  
   // extraer los datos de la solicitud
   const { nombre, email, password, apellidos, 

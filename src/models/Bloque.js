@@ -1,25 +1,29 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// Definir el esquema de Bloque
 const bloqueSchema = new Schema({
-
-    numero:{
+    // Campo numero
+    numero: {
         type: Number,
         required: true
     },
-    descripcion:{
+    // Campo descripcion
+    descripcion: {
         type: String,
         required: true
     },
+    // Relación con Temas mediante un array de ObjectId
     temas: [{
-        type:Schema.Types.ObjectId,
-        ref:"temas"
+        type: Schema.Types.ObjectId,
+        ref: "temas"
     }]
 },
-{ timestamps:true}
-);
+{ 
+    timestamps: true 
+});
 
-// Crear el modelo
+// Crear el modelo Bloque a partir del esquema
 const Bloque = mongoose.model('Bloque', bloqueSchema);
 
 module.exports = Bloque;

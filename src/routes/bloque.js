@@ -2,13 +2,15 @@ const router = require('express').Router();
 const {getBloque,addBloque,findBloque,deleteBloque,updateBloque} = require('../controllers/bloque.controller');
 const verifyToken=require('../midleware/validate-token');
 const {xss} = require('express-xss-sanitizer');
+const {validateBloque,validate}=require('../midleware/validateBloque');
+//const { validate } = require('../models/Bloque');
 
 
 
 router.get("/",verifyToken,getBloque);
 router.get("/:id",verifyToken,findBloque);
    
-router.post("/",xss(),verifyToken,addBloque);
+router.post("/",xss(),validateBloque,validate,addBloque);
 router.delete("/:id",xss(),verifyToken,deleteBloque);
 router.put("/:id",xss(),verifyToken,updateBloque);
 

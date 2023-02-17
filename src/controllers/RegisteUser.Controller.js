@@ -10,7 +10,8 @@ const registerUser = async (req, res) => {
     req.body=sanitize(req.body)
  
   // extraer los datos de la solicitud
-  const { nombre, email, password, apellidos, telefono, direccion, poblacion, provincia } = req.body;
+  const { nombre, email, password, apellidos, 
+    telefono, direccion, poblacion, provincia } = req.body;
 
   // comprobar si el correo electrónico ya está registrado
   const isEmailExist = await User.findOne({ email });

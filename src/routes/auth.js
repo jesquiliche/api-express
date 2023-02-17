@@ -8,13 +8,13 @@ const DeleteUser=require("../controllers/DeleteUser.controller");
 const getUserFilter = require('../controllers/GetUserFilter.controller');
 const verifyToken=require('../midleware/validate-token');
 const {xss} = require('express-xss-sanitizer');
-const {validateUser}=require('../midleware/validateUser');
-const {validateLogin}=require('../midleware/validateLogin');
-const { validate } = require('../models/User');
+const {validateUser,validateU}=require('../midleware/validateUser');
+const {validateLogin,validateL}=require('../midleware/validateLogin');
+//const { validate } = require('../models/User');
 
-router.post('/register',xss(),validateUser,validate, registerUser);
+router.post('/register',xss(),validateUser,validateU, registerUser);
 
-router.post('/login',xss(),validateLogin,validate, loginUser);
+router.post('/login',xss(),validateLogin,validateL, loginUser);
 
 router.get("/",verifyToken,getUser);
 router.post("/filter",xss(),verifyToken,getUserFilter);

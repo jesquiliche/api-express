@@ -1,3 +1,6 @@
+const conectaDb = require('./mongoose');
+
+
 const express=require('express');
 const app=express();
 const bodyParser = require('body-parser');
@@ -61,10 +64,10 @@ app.use((req, res, next) => {
 
 
 const verifyToken = require('./midleware/validate-token');
+conectaDb();
 
 
-
-app.listen(app.get("port"),()=>{
-    console.log("Server express on port "+app.get("port"));
+app.listen(app.get("port"),async ()=>{
+   // await console.log("Server express on port "+app.get("port"));
 });
 

@@ -9,7 +9,7 @@ const validateLogin = [
 ];
 
 // La función middleware de validación
-function validate(req, res, next) {
+function validateL(req, res, next) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
@@ -18,5 +18,6 @@ function validate(req, res, next) {
 }
 
 module.exports= {
-    validateLogin
+    validateLogin,
+    validateL
 }

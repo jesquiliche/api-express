@@ -126,7 +126,7 @@ auth-token: {{token}}
 
 
 ###
-//Ruta para añadir Blouques
+//Ruta para añadir Bloques
 POST  http://localhost:3001/api/bloque 
 Content-Type: application/json
 auth-token: {{token}}

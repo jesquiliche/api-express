@@ -10,16 +10,15 @@ const verifyToken=require('../midleware/validate-token');
 const {xss} = require('express-xss-sanitizer');
 const {validateUser,validateU}=require('../midleware/validateUser');
 const {validateLogin,validateL}=require('../midleware/validateLogin');
-//const { validate } = require('../models/User');
 
 router.post('/register',xss(),validateUser,validateU, registerUser);
 
 router.post('/login',xss(),validateLogin,validateL, loginUser);
 
-router.get("/",verifyToken,getUser);
+router.get("/",getUser);
 router.post("/filter",xss(),verifyToken,getUserFilter);
 
-router.get("/:id",xss(),verifyToken,FindUser);
+router.get("/:id",xss(),FindUser);
 router.put("/:id",xss(),verifyToken,UpdateUser)
 router.delete("/:id",xss(),verifyToken,DeleteUser)
    

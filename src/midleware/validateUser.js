@@ -3,7 +3,10 @@ const { body, validationResult } = require('express-validator');
 const app = express();
 
 // Definir la función middleware de validación para el usuario
-const validateUser = [    body('nombre').trim().notEmpty().withMessage('El nombre es requerido'),    body('apellidos').trim().notEmpty().withMessage('Los apellidos requerido'),    body('email').trim().isEmail().withMessage('El correo electrónico es inválido'),    body('password').isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres')];
+const validateUser = [    body('nombre').trim().notEmpty().withMessage('El nombre es requerido'),    
+  body('apellidos').trim().notEmpty().withMessage('Los apellidos requerido'),    
+  body('email').trim().isEmail().withMessage('El correo electrónico es inválido'),    
+  body('password').isLength({ min: 6 }).withMessage('La contraseña debe tener al menos 6 caracteres').isString().withMessage('La contraseña debe ser una cadena de texto')];
 
 // La función middleware de validación
 function validateU(req, res, next) {

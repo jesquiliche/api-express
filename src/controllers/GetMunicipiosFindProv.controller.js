@@ -3,14 +3,50 @@ const verifyToken = require('../midleware/validate-token'); // Middleware para v
 const Municipio = require('../models/Municipio'); // Modelo de Mongoose para Municipio
 
 // Función para obtener los municipios que pertenecen a una provincia
-const getMunicipioFindProv= async (req, res) => {
-    
-    const prov=req.params.id; // Se obtiene el ID de la provincia desde los parámetros de la URL
-    const municipios = await  Municipio.find({ id: new RegExp(`^${prov}`)}) // Se hace una búsqueda en la base de datos de los municipios que pertenecen a esa provincia
-                                    .limit(10000) // Se establece un límite alto para el número de resultados
-                                    .sort({nm:1}); // Se ordenan los resultados por el nombre del municipio
-    return res.status(200).json(municipios); // Se devuelve la lista de municipios en formato JSON
-      
+/**
+ * @swagger
+ * /api/municipios/{id}:
+ *   get:
+ *     summary: Obtener los municipios que pertenecen a una provincia
+ *     description: Devuelve una lista de todos los municipios que pertenecen a una provincia en particular.
+ *     parameters:
+ *       - in: header
+ *         name: auth-token
+ *         required: true
+ *         description: Token de autenticación de usuario.
+ *         schema:
+ *           type: string
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: Código de la provincia.
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: string
+ *                     description: Código del municipio.
+ *                   nm:
+ *                     type: string
+ *                     description: Nombre del municipio.
+ */
+const getMunicipioFindProv = async (req, res) => {
+    const prov = req.params.id;
+    const municipios = await Municipio.find({ id: new RegExp(`^${prov}`)})
+                                    .limit(10000)
+                                    .sort({nm:1})
+                                    .select('-_id id nombre'); // Selecciona solo los campos id y nombre
+    return res.status(200).json(municipios);
 }
+
 
 module.exports=getMunicipioFindProv; // Se exporta la función para que pueda ser utilizada en otras partes de la aplicación

@@ -40,17 +40,17 @@ auth-token: {{token}}
 // Exito: Status(200)
 // Fallo: Status(400)
 
-GET http://localhost:3001/api/user/filter
+POST  http://localhost:3001/api/user/filter
 Content-Type: application/json
 auth-token: {{token}}
-
+//Filtra por Nombre,email o apellidosS
 {
     //Filtrar por nombre
-    "nombre":"Jesus",
+    "nombre":"",
     //Filtrar por email
     "email":"",
     //Filtrar por email
-    "apellidos":""
+    "apellidos":"Quintana Esquiliche"
   
 }
 
@@ -90,6 +90,25 @@ auth-token: {{token}}
   "provincia": "08-Barcelona",
   "poblacion": "08007-Arenys de Munt"
 }
+
+###
+POST http://localhost:3001/api/user/filter
+//Busca por cualquiera de estos campos o una combinación de ellos
+Content-Type: application/json
+auth-token: {{token}}
+
+{
+  "email": "pepe@gmail.com",
+  "nombre": "Pepe",
+  "apellidos": "Fernandez Lopez",
+  "telefono": "6312222",
+  "direccion": "Carrer de América, 20",
+  "provincia": "08-Barcelona",
+  "poblacion": "08007-Arenys de Munt"
+}
+
+
+
 
 ###
 //Ruta para borrar los usuarios

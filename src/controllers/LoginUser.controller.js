@@ -11,7 +11,14 @@ const { body ,validationResult} = require('express-validator')
  * /api/user/login:
  *   post:
  *     summary: Iniciar sesión con email y contraseña
- *     tags: [Usuarios]
+ *     parameters:
+ *       - in: header
+ *         name: auth-token
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Token de autenticación válido.
+ *     tags: [Users]
  *     requestBody:
  *       required: true
  *       content:
@@ -90,8 +97,7 @@ const loginUser= async (req, res) => {
     
     // Evitar inyección de dependencias no SQL
     req.body=sanitize(req.body);
-
-    
+ 
     
     
     // Comprobar a través del email si el usuario existe en la BBDD

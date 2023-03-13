@@ -14,6 +14,13 @@ const jwt = require('jsonwebtoken'); // Se importa la biblioteca jsonwebtoken pa
 /**
  * @swagger
  * /api/user:
+ *   parameters:
+ *       - in: header
+ *         name: auth-token
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Token de autenticación válido.
  *   get:
  *     summary: Obtiene una lista de todos los usuarios
  *     tags: [Users]

@@ -2,6 +2,45 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bloque = require("../models/Bloque");
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Tema:
+ *       type: object
+ *       required:
+ *         - numero
+ *         - descripcion
+ *       properties:
+ *         numero:
+ *           type: number
+ *           description: Número del tema
+ *         descripcion:
+ *           type: string
+ *           description: Descripción del tema
+ *         bloque:
+ *           type: array
+ *           items:
+ *             $ref: '#/components/schemas/Bloque'
+ *           description: Arreglo de bloques relacionados al tema
+ *       example:
+ *         numero: 1
+ *         descripcion: Tema de prueba
+ *         bloque: []
+ * 
+ *     Bloque:
+ *       type: object
+ *       required:
+ *         - nombre
+ *       properties:
+ *         nombre:
+ *           type: string
+ *           description: Nombre del bloque
+ *       example:
+ *         nombre: Bloque de prueba
+ */
+
+
 // Crear un esquema para un tema
 const temaSchema = new Schema({
     numero: {

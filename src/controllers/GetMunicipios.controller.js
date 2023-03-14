@@ -1,4 +1,5 @@
-const User = require("../models/Municipio");
+const Municipio = require("../models/Municipio");
+
 /**
  * @swagger
  * /api/municipios:
@@ -37,6 +38,7 @@ const User = require("../models/Municipio");
  *                     type: string
  *                     description: Nombre del municipio.
  */
+
 const getMunicipio = async (req, res) => {
     const municipios = await Municipio.find();
     return res.status(200).json(municipios);

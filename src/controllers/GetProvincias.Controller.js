@@ -7,6 +7,7 @@ const Provincia = require('../models/Provincia');
  * @swagger
  * /api/provincias:
  *   get:
+ *     tags: [Provincias]
  *     summary: Obtener todas las provincias
  *     description: Devuelve una lista de todas las provincias existentes.
  *     parameters:

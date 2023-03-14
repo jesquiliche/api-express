@@ -7,6 +7,7 @@ const Municipio = require('../models/Municipio'); // Modelo de Mongoose para Mun
  * @swagger
  * /api/municipios/{id}:
  *   get:
+ *     tags: [Municipios]
  *     summary: Obtener los municipios que pertenecen a una provincia
  *     description: Devuelve una lista de todos los municipios que pertenecen a una provincia en particular.
  *     parameters:

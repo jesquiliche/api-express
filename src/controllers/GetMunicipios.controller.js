@@ -1,7 +1,9 @@
+const User = require("../models/Municipio");
 /**
  * @swagger
- * /municipios:
+ * /api/municipios:
  *   get:
+ *     tags: [Municipios]
  *     summary: Obtener todos los municipios
  *     description: Devuelve una lista de todos los municipios en la base de datos.
  *     parameters:
@@ -10,7 +12,8 @@
  *         required: true
  *         description: Token de autenticación de usuario.
  *         schema:
- *           type: string
+ *              items:
+ *               $ref: '#/components/schemas/Municipio'
  *     responses:
  *       200:
  *         description: OK

@@ -1,6 +1,24 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Municipio:
+ *       type: object
+ *       required:
+ *         - id
+ *         - nm
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: El id del municipio es un campo requerido
+ *         nm:
+ *           type: string
+ *           description: El nombre del municipio es un campo requerido
+ */
+
 // Definir el esquema del modelo de Municipio
 const municipioSchema= new Schema({
     id: {

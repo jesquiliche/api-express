@@ -16,9 +16,9 @@ router.post('/register',xss(),validateUser,validateU, registerUser);
 router.post('/login',xss(),validateLogin,validateL, loginUser);
 
 router.get("/",getUser);
-router.post("/filter",xss(),getUserFilter);
+router.post("/filter",xss(),verifyToken,getUserFilter);
 
-router.get("/:id",xss(),FindUser);
+router.get("/:id",xss(),verifyToken,FindUser);
 router.put("/:id",xss(),verifyToken,UpdateUser)
 router.delete("/:id",xss(),verifyToken,DeleteUser)
    

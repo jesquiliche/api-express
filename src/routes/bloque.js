@@ -10,7 +10,7 @@ const {validateBloque,validate}=require('../midleware/validateBloque');
 router.get("/",verifyToken,getBloque);
 router.get("/:id",verifyToken,findBloque);
    
-router.post("/",xss(),validateBloque,validate,addBloque);
+router.post("/",xss(),verifyToken,validateBloque,validate,addBloque);
 router.delete("/:id",xss(),verifyToken,deleteBloque);
 router.put("/:id",xss(),verifyToken,updateBloque);
 

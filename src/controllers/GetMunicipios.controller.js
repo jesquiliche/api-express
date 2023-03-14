@@ -37,7 +37,10 @@ const Municipio = require("../models/Municipio");
  *                   nm:
  *                     type: string
  *                     description: Nombre del municipio.
+ *     security:
+ *         - auth-token: []
  */
+
 
 const getMunicipio = async (req, res) => {
     const municipios = await Municipio.find();

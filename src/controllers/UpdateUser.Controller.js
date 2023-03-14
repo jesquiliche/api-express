@@ -56,14 +56,18 @@ const verifyToken = require("../midleware/validate-token");
  *              direccion: Dirección
  *              provincia: Provincia
  *              poblacion: Población
- *    responses:
- *      200:
- *        description: Usuario actualizado exitosamente
- *      400:
- *        description: Error en la petición o usuario no encontrado
- *      500:
- *        description: Error del servidor
+ *      responses:
+ *        200:
+ *          description: Usuario actualizado exitosamente
+ *        400:
+ *          description: Error en la petición o usuario no encontrado
+ *        500:
+ *          description: Error del servidor.
+ *    security:
+ *        - auth-token: []
+ * 
  */
+
 
 // Función para actualizar un usuario en la base de datos
 const UpdateUser = async (req,res) => {

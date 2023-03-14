@@ -39,6 +39,8 @@ const jwt = require('jsonwebtoken'); // Se importa la biblioteca jsonwebtoken pa
  *          description: Acceso denegado
  *       500:
  *          description: Error interno del servidor
+ *   security:
+ *       - auth-token: []
  */
 
 

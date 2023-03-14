@@ -22,6 +22,8 @@ const Bloque = require('../models/Bloque');
  *             $ref: '#/components/schemas/Bloque'
  *       500:
  *         description: Error interno del servidor.
+ *     security:
+ *         - auth-token: []
  */
 
 
@@ -66,6 +68,8 @@ const getBloque = async (req, res) => {
  *         description: Error de autenticación.
  *       500:
  *         description: Error interno del servidor.
+ *     security:
+ *         - auth-token: []
  */
 
 // Handler para agregar un nuevo bloque
@@ -114,6 +118,8 @@ const addBloque = async (req, res) => {
  *         description: Bloque no encontrado.
  *       500:
  *         description: Error interno del servidor.
+ *     security:
+ *         - auth-token: []
  */
 
 // Handler para actualizar un bloque existente
@@ -158,6 +164,8 @@ const updateBloque = async (req, res) => {
  *         description: Error en la petición o bloque no encontrado.
  *       500:
  *         description: Error interno del servidor.
+ *     security:
+ *         - auth-token: []
  */
 
 // Handler para encontrar un bloque por su ID
@@ -198,6 +206,8 @@ const findBloque = async (req, res) => {
  *         description: Error en la petición o bloque no encontrado.
  *       500:
  *         description: Error interno del servidor.
+ *     security:
+ *         - auth-token: [] 
  */
 
 

@@ -44,7 +44,8 @@ const User = require("../models/User");
  *         description: Acceso denegado.
  *       '500':
  *         description: Error interno del servidor.
-
+ *     security:
+ *         - auth-token: []
  */
 
 // Función asíncrona para buscar usuarios filtrados

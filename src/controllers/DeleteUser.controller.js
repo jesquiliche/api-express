@@ -26,6 +26,8 @@
  *        description: Error en la petición o usuario no encontrado
  *      500:
  *        description: Error del servidor
+ *    security:
+ *       - auth-token: []
  */
 
 

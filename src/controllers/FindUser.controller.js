@@ -40,6 +40,8 @@ const User = require("../models/User");
  *         description: El usuario con el id especificado no existe.
  *       500:
  *         description: Error interno del servidor.
+ *     security:
+ *         - auth-token: [] 
  */
 
 

@@ -33,6 +33,8 @@ const Provincia = require('../models/Provincia');
  *                   nm:
  *                     type: string
  *                     description: Nombre de la provincia.
+ *     security:
+ *         - auth-token: []
  */
 const getProvincia = async (req, res) => {
     const provincias = await Provincia.find().limit(100).sort({nm:1});

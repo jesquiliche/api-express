@@ -39,7 +39,9 @@ const Municipio = require('../models/Municipio'); // Modelo de Mongoose para Mun
  *                   nm:
  *                     type: string
  *                     description: Nombre del municipio.
- */
+ *     security:
+ *         - auth-token: []
+  */
 const getMunicipioFindProv = async (req, res) => {
     const prov = req.params.id;
     const municipios = await Municipio.find({ id: new RegExp(`^${prov}`)})

@@ -94,5 +94,6 @@ const swaggerJSDoc = require("swagger-jsdoc");
 conectaDb();
 
 app.listen(app.get("port"), async () => {
-  // await console.log("Server express on port "+app.get("port"));
+
+  await console.log("Server express on port "+app.get("port"));
 });

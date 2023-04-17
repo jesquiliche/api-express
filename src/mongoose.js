@@ -10,7 +10,7 @@ mongoose.set('strictQuery', false);
 const user=process.env.DB_USER;
 const password=process.env.DB_PASSWORD;
 
-const uri=`mongodb+srv://jesquiliche:3912481B@cluster0.m14ql.mongodb.net/temario?authSource=admin&replicaSet=atlas-jjcdpd-shard-0&w=majority&readPreference=primary&retryWrites=true&ssl=true`
+const uri=process.env.MONGODB_URI;
 
 //const uri = `mongodb+srv://${user}:${password}@cluster0.m14ql.mongodb.net/temario?authSource=admin&replicaSet=atlas-jjcdpd-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true`;
 

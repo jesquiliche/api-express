@@ -7,7 +7,6 @@ const bcrypt = require('bcryptjs');
  */
 const encriptarContrasena=async (password)=>{
     // Genera un "salt" con 10 vueltas (10 rounds) 
-    console.log(password);
     let salt = await bcrypt.genSalt(5);
     // Encripta la contraseña utilizando el "salt"
     const pass = await bcrypt.hash(password, salt);

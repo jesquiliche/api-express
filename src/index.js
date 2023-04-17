@@ -65,7 +65,7 @@ app.use("/api/tema", temasRoutes);
 
 app.get("/", function (req, res) {
   res.send("hello world");
-  console.log("Entro");
+
 });
 
 app.use((req, res, next) => {

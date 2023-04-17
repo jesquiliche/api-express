@@ -57,7 +57,7 @@ const FindUser = async (req, res) => {
       { "_id": 0, "__v": 0, "createdAt": 0, "updatedAt": 0 }
     );
     // Devolver el usuario encontrado en la respuesta
-    console.log(user)
+    
     if(!user) {
       return res.status(404).json({mensaje:"El usuario con el id especificado no existe."});
     }

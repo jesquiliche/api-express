@@ -23,8 +23,8 @@ const swaggerOptions = {
       },
       servers: [
         {
-          url: 'http://localhost:3001',
-          description: 'Local server',
+          url: 'https://api-express-jqe.up.railway.app/',
+          description: 'Producción',
         },
       ],
       

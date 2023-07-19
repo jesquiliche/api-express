@@ -15,13 +15,6 @@ const sanitize=require('mongo-sanitize'); // importar mongo-sanitize para saniti
  *    description: Crea un nuevo usuario con la información proporcionada y lo registra.
  *    tags:
  *      - Users
- *    parameters:
- *      - in: header
- *        name: auth-token
- *        schema:
- *          type: string
- *        required: true
- *        description: Token de autenticación válido.
  *    requestBody:
  *      description: Información del usuario
  *      required: true

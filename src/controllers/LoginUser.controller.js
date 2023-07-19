@@ -11,13 +11,6 @@ const { body ,validationResult} = require('express-validator')
  * /api/user/login:
  *   post:
  *     summary: Iniciar sesión con email y contraseña
- *     parameters:
- *       - in: header
- *         name: auth-token
- *         schema:
- *           type: string
- *         required: true
- *         description: Token de autenticación válido.
  *     tags: [Users]
  *     requestBody:
  *       required: true

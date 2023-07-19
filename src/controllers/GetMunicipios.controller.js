@@ -7,14 +7,6 @@ const Municipio = require("../models/Municipio");
  *     tags: [Municipios]
  *     summary: Obtener todos los municipios
  *     description: Devuelve una lista de todos los municipios en la base de datos.
- *     parameters:
- *       - in: header
- *         name: auth-token
- *         required: true
- *         description: Token de autenticación de usuario.
- *         schema:
- *              items:
- *               $ref: '#/components/schemas/Municipio'
  *     responses:
  *       200:
  *         description: OK
@@ -37,8 +29,6 @@ const Municipio = require("../models/Municipio");
  *                   nm:
  *                     type: string
  *                     description: Nombre del municipio.
- *     security:
- *         - auth-token: []
  */
 
 

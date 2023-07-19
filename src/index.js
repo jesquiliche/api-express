@@ -19,7 +19,8 @@ const swaggerOptions = {
       info: {
         title: 'API Express Mongo',
         version: '1.0.0',
-        description: 'Documentación de la API. Utiliza Express-Validator, Json Web Token y mongoose.',
+        description: 'Documentación de la API. Utiliza Express-Validator, Json Web Token y mongoose.'
+
       },
       servers: [
         {

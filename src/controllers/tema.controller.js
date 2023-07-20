@@ -11,13 +11,6 @@ const Bloque = require("../models/Bloque"); // Importar el modelo Bloque
  *       - bearerAuth: []
  *     tags:
  *       - Temas
- *     parameters:
- *       - in: header
- *         name: auth-token
- *         schema:
- *           type: string
- *         required: true
- *         description: Token de autenticación
  *     responses:
  *       '200':
  *         description: Lista de todos los temas
@@ -206,12 +199,6 @@ const updateTema = async (req, res) => {
  *     summary: Obtener un tema por ID
  *     tags: [Temas]
  *     parameters:
- *       - in: header
- *         name: auth-token
- *         schema:
- *           type: string
- *         required: true
- *         description: Token de autenticación
  *       - in: path
  *         name: id
  *         schema:
@@ -251,11 +238,21 @@ const updateTema = async (req, res) => {
 
 const findTema = async (req, res) => {
   const { id } = req.params; // Extraer el ID del bloque de los parámetros de la solicitud
-  const tema = await Bloque.findById(
-    id, // Buscar el bloque con el ID proporcionado
-    { __v: 0, createdAt: 0, updatedAt: 0 }
-  ); // Omitir los campos __v, createdAt y updatedAt
-  return res.status(200).json(bloque); // Devolver una respuesta con código 200 y el bloque encontrado
+  try {
+    const tema = await Bloque.findOne(
+      { numero: id }, // Buscar el bloque con el ID proporcionado
+      { __v: 0, createdAt: 0, updatedAt: 0 }
+    ); // Omitir los campos __v, createdAt y updatedAt
+
+    if (!tema) {
+      return res.status(404).json({ error: 'Tema no encontrado' });
+    }
+
+    return res.status(200).json(tema); // Devolver una respuesta con código 200 y el tema encontrado
+  } catch (error) {
+    console.error('Error al buscar el tema:', error);
+    return res.status(500).json({ error: 'Error interno del servidor' });
+  }
 };
 
 /**

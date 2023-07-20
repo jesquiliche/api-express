@@ -22,9 +22,7 @@ const Bloque = require('../models/Bloque');
  *             $ref: '#/components/schemas/Bloque'
  *       500:
  *         description: Error interno del servidor.
- *     security:
- *         - auth-token: []
- */
+*/
 
 
 
@@ -141,12 +139,6 @@ const updateBloque = async (req, res) => {
  *     description: Retorna un objeto con los datos del bloque solicitado mediante su ID.
  *     tags: [Bloques]
  *     parameters:
- *       - in: header
- *         name: auth-token
- *         schema:
- *           type: string
- *         required: true
- *         description: Token de autenticación válido.
  *       - in: path
  *         name: id
  *         schema:
@@ -164,16 +156,22 @@ const updateBloque = async (req, res) => {
  *         description: Error en la petición o bloque no encontrado.
  *       500:
  *         description: Error interno del servidor.
- *     security:
- *         - auth-token: []
- */
+  */
 
-// Handler para encontrar un bloque por su ID
 const findBloque = async (req, res) => {
   const { id } = req.params;
-  const bloque = await Bloque.findById(id, { '__v': 0, 'createdAt': 0, 'updatedAt': 0 });
-  return res.status(200).json(bloque);
+  try {
+    const bloque = await Bloque.findOne({ numero: id });
+    if (!bloque) {
+      return res.status(404).json({ error: 'Bloque no encontrado' });
+    }
+    return res.status(200).json(bloque);
+  } catch (error) {
+    console.error('Error al buscar el bloque:', error);
+    return res.status(500).json({ error: 'Error interno del servidor' });
+  }
 };
+
 
 /**
  * @swagger

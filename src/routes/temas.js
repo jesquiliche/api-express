@@ -4,8 +4,8 @@ const verifyToken=require('../midleware/validate-token');
 const {xss} = require('express-xss-sanitizer');
 
 
-router.get("/",verifyToken,getTema);
-router.get("/:id",verifyToken,findTema);
+router.get("/",getTema);
+router.get("/:id",findTema);
    
 router.post("/",xss(),verifyToken,addTema);
 router.delete("/:id",xss(),verifyToken,deleteTema);

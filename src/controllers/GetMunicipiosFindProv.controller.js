@@ -11,13 +11,7 @@ const Municipio = require('../models/Municipio'); // Modelo de Mongoose para Mun
  *     summary: Obtener los municipios que pertenecen a una provincia
  *     description: Devuelve una lista de todos los municipios que pertenecen a una provincia en particular.
  *     parameters:
- *       - in: header
- *         name: auth-token
- *         required: true
- *         description: Token de autenticación de usuario.
- *         schema:
- *           type: string
- *       - in: path
+*       - in: path
  *         name: id
  *         required: true
  *         description: Código de la provincia.
@@ -39,15 +33,13 @@ const Municipio = require('../models/Municipio'); // Modelo de Mongoose para Mun
  *                   nm:
  *                     type: string
  *                     description: Nombre del municipio.
- *     security:
- *         - auth-token: []
   */
 const getMunicipioFindProv = async (req, res) => {
     const prov = req.params.id;
     const municipios = await Municipio.find({ id: new RegExp(`^${prov}`)})
                                     .limit(10000)
                                     .sort({nm:1})
-                                    .select('-_id id nombre'); // Selecciona solo los campos id y nombre
+                                    .select('-_id id nm'); // Selecciona solo los campos id y nombre
     return res.status(200).json(municipios);
 }
 

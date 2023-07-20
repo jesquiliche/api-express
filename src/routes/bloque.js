@@ -7,8 +7,8 @@ const {validateBloque,validate}=require('../midleware/validateBloque');
 
 
 
-router.get("/",verifyToken,getBloque);
-router.get("/:id",verifyToken,findBloque);
+router.get("/",getBloque);
+router.get("/:id",findBloque);
    
 router.post("/",xss(),verifyToken,validateBloque,validate,addBloque);
 router.delete("/:id",xss(),verifyToken,deleteBloque);
